@@ -1,8 +1,7 @@
 import { App, staticFiles } from "fresh";
-import { type State } from "./utils.ts";
 import { BACKEND_URL } from "./constants/server.tsx";
 
-export const app = new App<State>();
+export const app = new App();
 
 app.use(staticFiles());
 
