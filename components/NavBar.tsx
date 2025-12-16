@@ -1,4 +1,4 @@
-import DarkModeToggle from "../islands/theme/DarkModeToggle.tsx";
+import DarkModeToggle from "../islands/toggles/DarkModeToggle.tsx";
 
 const NavBar = () => {
   return (

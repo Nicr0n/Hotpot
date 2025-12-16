@@ -1,30 +1,63 @@
-import { useLayoutEffect, useState } from "preact/hooks";
-import { JSX } from "preact";
+import { useCallback, useEffect, useState } from "preact/hooks";
+// @ts-types="preact"
+import { TargetedEvent } from "preact";
+import { useSignal } from "@preact/signals";
 
-export default function DarkModeToggle() {
-  const [theme, setTheme] = useState<string>(
-    localStorage.getItem("theme") || "dark",
+type Theme = "light" | "dark";
+
+function isTheme(input: string | null): input is Theme {
+  return input === "light" || input === "dark";
+}
+
+function getInitialTheme(): Theme {
+  const storedTheme = localStorage.getItem("hotpot_theme");
+
+  if (isTheme(storedTheme)) {
+    return storedTheme;
+  }
+
+  localStorage.setItem("hotpot_theme", "dark");
+  return "dark";
+}
+
+const DarkModeToggle = () => {
+  const [theme, setTheme] = useState<Theme>(
+    getInitialTheme,
   );
+  const isLoading = useSignal(true);
 
-  useLayoutEffect(() => {
-    localStorage.setItem("theme", theme === "dark" ? "dark" : "light");
+  useEffect(() => {
+    localStorage.setItem("hotpot_theme", theme);
     document.documentElement.setAttribute("data-theme", theme);
+    isLoading.value = false;
   }, [theme]);
 
-  const handleToggle = (e: JSX.TargetedEvent<HTMLInputElement, Event>) => {
-    const isChecked = e.currentTarget.checked;
-    const newTheme = isChecked ? "dark" : "light";
-    setTheme(newTheme);
-  };
+  const handleToggle = useCallback(
+    (e: TargetedEvent<HTMLInputElement, Event>) => {
+      // 检查当前复选框是否被选中
+      const isChecked = e.currentTarget.checked;
+
+      // 根据复选框的状态计算新的主题
+      const newTheme: Theme = isChecked ? "dark" : "light";
+
+      // 更新状态，这将触发 useEffect
+      setTheme(newTheme);
+    },
+    [], // 依赖项为空，只创建一次
+  );
+
+  if (isLoading.value) {
+    return <div class="skeleton h-6 w-10"></div>;
+  }
 
   return (
     <label class="toggle text-base-content">
       <input
         type="checkbox"
+        value="dark"
         checked={theme === "dark"}
         onChange={handleToggle}
       />
-
       <svg
         aria-label="sun"
         xmlns="http://www.w3.org/2000/svg"
@@ -66,4 +99,6 @@ export default function DarkModeToggle() {
       </svg>
     </label>
   );
-}
+};
+
+export default DarkModeToggle;
