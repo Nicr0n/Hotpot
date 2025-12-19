@@ -1,30 +1,35 @@
-import { useSignal } from "@preact/signals";
-import { Head } from "fresh/runtime";
-import Counter from "../islands/Counter.tsx";
+import { define } from "../utils.ts";
+import { BACKEND_URL } from "../constants/server.tsx";
+import { PageProps } from "fresh";
+import { ServerStatusResponse } from "../types/serverstatus.ts";
+import ServersList from "../islands/ServersStatus.tsx";
 
-export default function Home() {
-  const count = useSignal(3);
+interface HomeData {
+  serverstatus_reponse: ServerStatusResponse;
+}
 
+export const handler = define.handlers({
+  async GET(_ctx) {
+    const response = await fetch(new URL(BACKEND_URL + "/json/stats.json"));
+    // 1. 先获取纯 JSON 数据
+    const serverstatus_reponse: ServerStatusResponse = await response.json();
+    console.log(serverstatus_reponse);
+
+    return {
+      data: {
+        serverstatus_reponse: serverstatus_reponse,
+      },
+    };
+  },
+});
+
+export default function Page(
+  { data }: PageProps<HomeData, unknown>,
+) {
   return (
-    <div class="px-4 py-8 mx-auto fresh-gradient min-h-screen">
-      <Head>
-        <title>Fresh counter</title>
-      </Head>
-      <div class="max-w-3xl mx-auto flex flex-col items-center justify-center">
-        <img
-          class="my-6"
-          src="/logo.svg"
-          width="128"
-          height="128"
-          alt="the Fresh logo: a sliced lemon dripping with juice"
-        />
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
-          Try updating this message in the
-          <code class="mx-2">./routes/index.tsx</code> file, and refresh.
-        </p>
-        <Counter count={count} />
-      </div>
+    <div class="md:px-12 md:py-8 px-6 py-4 min-h-screen bg-base-200">
+      <ServersList server_list_init={data.serverstatus_reponse}>
+      </ServersList>
     </div>
   );
 }
