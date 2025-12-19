@@ -1,8 +1,11 @@
-import ArchLinux from "../assets/Arch_Linux.svg?react";
-import Debian from "../assets/Debian.svg?react";
-import Ubuntu from "../assets/Ubuntu.svg?react";
-import NixOs from "../assets/NixOS.svg?react";
-import Linux from "../assets/Linux.svg?react";
+import {
+  ArchLinuxIcon,
+  CentOSIcon,
+  DebianIcon,
+  LinuxIcon,
+  NixOSIcon,
+  UbuntuIcon,
+} from "./icons/index.ts";
 
 interface OsIconProps {
   os: string;
@@ -11,15 +14,17 @@ interface OsIconProps {
 const OsIcon = ({ os }: OsIconProps) => {
   switch (os) {
     case "os=arch":
-      return <ArchLinux className="w-5 h-5 translate-y-1" />;
+      return <ArchLinuxIcon className="w-5 h-5 translate-y-1" />;
     case "os=debian":
-      return <Debian className="w-5 h-5 translate-y-1" />;
+      return <DebianIcon className="w-5 h-5 translate-y-1" />;
     case "os=ubuntu":
-      return <Ubuntu className="w-5 h-5 translate-y-1" />;
+      return <UbuntuIcon className="w-5 h-5 translate-y-1" />;
     case "os=nixos":
-      return <NixOs className="w-5 h-5 translate-y-1" />;
+      return <NixOSIcon className="w-5 h-5 translate-y-1" />;
     case "os=linux":
-      return <Linux className="w-5 h-5 translate-y-1" />;
+      return <LinuxIcon className="w-5 h-5 translate-y-1" />;
+    case "os=centos":
+      return <CentOSIcon className="w-5 h-5 translate-y-1" />;
   }
 };
 
