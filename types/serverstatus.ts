@@ -5,6 +5,12 @@ interface ServerStatus {
   memory_total: number;
   memory_used: number;
   labels: string;
+  hdd_total: number;
+  hdd_used: number;
+  swap_total: number;
+  swap_used: number;
+  network_out: number;
+  network_in: number;
 }
 
 export class ServerStatusCollection {

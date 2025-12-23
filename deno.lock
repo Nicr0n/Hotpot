@@ -46,7 +46,6 @@
     "npm:rollup@^4.50.0": "4.53.3",
     "npm:tailwindcss@^4.1.10": "4.1.17",
     "npm:theme-change@^2.5.0": "2.5.0",
-    "npm:vite-plugin-svgr@^4.5.0": "4.5.0_vite@7.2.7__@types+node@24.2.0__picomatch@4.0.3_rollup@4.53.3_@svgr+core@8.1.0__@babel+core@7.28.5_@types+node@24.2.0",
     "npm:vite@^7.1.3": "7.2.7_@types+node@24.2.0_picomatch@4.0.3",
     "npm:vite@^7.1.4": "7.2.7_@types+node@24.2.0_picomatch@4.0.3"
   },
@@ -1333,7 +1332,6 @@
       "npm:preact@^10.27.2",
       "npm:tailwindcss@^4.1.10",
       "npm:theme-change@^2.5.0",
-      "npm:vite-plugin-svgr@^4.5.0",
       "npm:vite@^7.1.3"
     ]
   }
