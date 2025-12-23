@@ -13,7 +13,7 @@ const CpuGrid = ({ cpu_usage }: CpuGridProps) => {
 
   return (
     <div class="flex flex-col gap-2">
-      <div class="flex flex-row gap-1 items-center text-base font-bold">
+      <div class="flex flex-row gap-1 items-center text-sm font-bold">
         <Cpu class="w-4 h-4" />
         CPU
       </div>

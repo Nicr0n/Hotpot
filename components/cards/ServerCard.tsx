@@ -20,7 +20,7 @@ export default function ServerCard({ serverStatus }: ServerCardProps) {
           </div>
           <div class="badge badge-success">Online</div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <CpuGrid cpu_usage={serverStatus.cpu}></CpuGrid>
           <MemoryGrid
             memory_total={serverStatus.memory_total}
@@ -32,7 +32,11 @@ export default function ServerCard({ serverStatus }: ServerCardProps) {
             hdd_total={serverStatus.hdd_total}
           >
           </DiskGrid>
-          <TrafficGrid network_out={serverStatus.network_out} limit={0}>
+          <TrafficGrid
+            network_out={serverStatus.network_out}
+            network_in={serverStatus.network_in}
+            limit={0}
+          >
           </TrafficGrid>
         </div>
       </div>

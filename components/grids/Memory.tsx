@@ -1,4 +1,5 @@
 import { MemoryStick } from "lucide-preact";
+import { calculate_memory_unit } from "../../utils/common.ts";
 
 interface MemoryGridProps {
   memory_total: number;
@@ -6,6 +7,8 @@ interface MemoryGridProps {
 }
 
 const MemoryGrid = ({ memory_total, memory_used }: MemoryGridProps) => {
+  const memory_used_unit = calculate_memory_unit(memory_used);
+  const memory_total_unit = calculate_memory_unit(memory_total);
   const memory_ratio = memory_used / memory_total;
   const memory_status_class = memory_ratio < 0.5
     ? "progress-success"
@@ -16,9 +19,14 @@ const MemoryGrid = ({ memory_total, memory_used }: MemoryGridProps) => {
 
   return (
     <div class="flex flex-col gap-2">
-      <div class="flex flex-row gap-1 items-center text-base font-bold">
-        <MemoryStick class="w-4 h-4" />
-        Memory
+      <div class="flex flex-row gap-1 items-end font-bold">
+        <div class="flex flex-row gap-1 items-center flex-1 text-sm">
+          <MemoryStick class="w-4 h-4" />
+          Memory
+        </div>
+        <div class="text-xs">
+          {memory_used_unit} / {memory_total_unit}
+        </div>
       </div>
       <div class="flex flex-row gap-2 items-end">
         <div class="grid place-items-center flex-1 relative">

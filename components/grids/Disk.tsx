@@ -1,4 +1,5 @@
 import { HardDrive } from "lucide-preact";
+import { calculate_hdd_unit } from "../../utils/common.ts";
 
 interface CpuGridProps {
   hdd_total: number;
@@ -16,9 +17,18 @@ const DiskGrid = ({ hdd_total, hdd_used }: CpuGridProps) => {
 
   return (
     <div class="flex flex-col gap-2">
-      <div class="flex flex-row gap-1 items-center text-base font-bold">
-        <HardDrive class="w-4 h-4" />
-        Hard Disk
+      <div class="flex flex-row gap-1 items-center font-bold">
+        <div class="flex flex-row gap-1 items-center text-sm flex-1">
+          <HardDrive class="w-4 h-4" />
+          Hard Disk
+        </div>
+        <div class="text-xs">
+          {(hdd_total === 0 && hdd_used == 0)
+            ? "NaN"
+            : `${calculate_hdd_unit(hdd_used)}/${
+              calculate_hdd_unit(hdd_total)
+            }`}
+        </div>
       </div>
       <div class="flex flex-row gap-2 items-end">
         <div class="grid place-items-center flex-1">

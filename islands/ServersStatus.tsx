@@ -57,7 +57,7 @@ export default function ServersList({ server_list_init }: ServerListProps) {
         </div>
       </div>
       <div class="divider divider-start">Servers Status</div>
-      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 sm:grid-cols-1">
+      <div class="grid md:grid-cols-2 2xl:grid-cols-3 gap-4 sm:grid-cols-1">
         {server_list.servers.map((server) => (
           <ServerCard key={server.alias} serverStatus={server} />
         ))}
