@@ -39,13 +39,13 @@ export default function ServersList({ server_list_init }: ServerListProps) {
       <div class="grid md:grid-cols-3 gap-4 sm:grid-cols-1">
         <div class="card bg-base-100 shadow-xl">
           <div class="card-body">
-            <h2 class="card-title">Servers</h2>
+            <h2 class="card-title">Servers number</h2>
             <p>{server_list.servers.length}</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-xl">
           <div class="card-body">
-            <h2 class="card-title">Groups</h2>
+            <h2 class="card-title">Groups number</h2>
             <p>{server_list.count_gid_number()}</p>
           </div>
         </div>

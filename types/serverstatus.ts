@@ -11,6 +11,11 @@ interface ServerStatus {
   swap_used: number;
   network_out: number;
   network_in: number;
+  location: string;
+  network_tx: number;
+  network_rx: number;
+  online4: boolean;
+  online6: boolean;
 }
 
 export class ServerStatusCollection {

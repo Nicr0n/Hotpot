@@ -1,0 +1,25 @@
+name: Fresh Project CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x # 使用最新的 Deno 2
+
+      - name: Run linter
+        run: deno lint
+
+      - name: Build test
+        run: deno task build
