@@ -18,5 +18,8 @@ jobs:
         with:
           deno-version: v2.x # 使用最新的 Deno 2
 
+      - name: Install dependencies
+        run: deno install
+
       - name: Build test
         run: deno task build
