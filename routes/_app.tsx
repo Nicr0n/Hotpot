@@ -1,5 +1,6 @@
 import { PageProps } from "fresh";
 import NavBar from "../components/NavBar.tsx";
+import Footer from "../components/Footer.tsx";
 
 const themeLoaderScript = `(function() {
   try {
@@ -30,6 +31,7 @@ export default function App(
       <body>
         <NavBar />
         <Component />
+        <Footer />
       </body>
     </html>
   );

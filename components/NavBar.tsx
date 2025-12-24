@@ -1,10 +1,13 @@
+import { LayoutDashboard } from "lucide-preact";
 import DarkModeToggle from "../islands/toggles/DarkModeToggle.tsx";
 
 const NavBar = () => {
   return (
-    <div class="navbar bg-base-100 shadow-sm">
+    <div class="navbar bg-base-100 shadow-sm ">
       <div class="flex-1">
-        <a class="btn btn-ghost text-xl" href="/">Hotpot Probes</a>
+        <a class="btn btn-ghost text-xl" href="/">
+          <LayoutDashboard />Hotpot Probes
+        </a>
       </div>
 
       <div class="flex-none">
