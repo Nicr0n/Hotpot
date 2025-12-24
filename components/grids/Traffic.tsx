@@ -70,9 +70,17 @@ const TrafficGrid = ({ limit, network_out, network_in }: TrafficGridProps) => {
               </progress>
             )}
 
-          <span class="col-start-1 row-start-1 text-xs font-medium z-10 group-[data-theme='light']:text-white">
-            {traffic_limit_percent_text}
-          </span>
+          {traffic_limit_percent_text === "∞"
+            ? (
+              <span class="col-start-1 row-start-1 text-xs font-medium z-10 text-white">
+                {traffic_limit_percent_text}
+              </span>
+            )
+            : (
+              <span class="col-start-1 row-start-1 text-xs font-medium z-10">
+                {traffic_limit_percent_text}
+              </span>
+            )}
         </div>
       </div>
     </div>

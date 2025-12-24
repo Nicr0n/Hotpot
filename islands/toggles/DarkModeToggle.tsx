@@ -5,11 +5,18 @@ import { useSignal } from "@preact/signals";
 
 type Theme = "light" | "dark";
 
+const IS_BROWSER = typeof window !== "undefined";
+
 function isTheme(input: string | null): input is Theme {
   return input === "light" || input === "dark";
 }
 
 function getInitialTheme(): Theme {
+  // fix SSR error
+  if (!IS_BROWSER) {
+    return "dark";
+  }
+
   const storedTheme = localStorage.getItem("hotpot_theme");
 
   if (isTheme(storedTheme)) {
