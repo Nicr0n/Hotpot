@@ -15,16 +15,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Deno
-        uses: denoland/setup-deno@v2
+      - name: Test Docker Build (Dry Run)
+        uses: docker/build-push-action@v5
         with:
-          deno-version: v2.x
-
-      - name: Install dependencies
-        run: deno install
-
-      - name: Build test
-        run: deno task build
+          context: .
+          file: ./docker/Dockerfile
+          push: false
+          # 开启本地缓存，加速后续构建
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   # 任务 2：仅在有版本标签推送时运行
   publish:

@@ -3,6 +3,8 @@ FROM denoland/deno:alpine AS builder
 WORKDIR /app
 COPY . .
 
+# 安装依赖
+RUN deno install
 # 必须先执行 build，生成 _fresh 目录
 RUN deno task build
 
