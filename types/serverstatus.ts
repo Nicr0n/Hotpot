@@ -30,6 +30,20 @@ export class ServerStatusCollection {
     this.servers.forEach((server) => gid_counts.add(server.gid));
     return gid_counts.size;
   }
+
+  public get_total_rx(): number {
+    return this.servers.reduce(
+      (accumulator, server) => accumulator + server.network_rx,
+      0,
+    );
+  }
+
+  public get_total_tx(): number {
+    return this.servers.reduce(
+      (accumulator, server) => accumulator + server.network_tx,
+      0,
+    );
+  }
 }
 
 interface ServerStatusResponse {

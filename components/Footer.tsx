@@ -19,7 +19,11 @@ const Footer = () => {
         </div>
       </aside>
       <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-        <a href="https://github.com/Nicr0n/Hotpot">
+        <a
+          href="https://github.com/Nicr0n/Hotpot"
+          class="flex flex-row gap-1 items-center"
+        >
+          Check on github
           <svg
             height="24"
             aria-hidden="true"

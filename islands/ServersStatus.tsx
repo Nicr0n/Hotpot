@@ -5,6 +5,8 @@ import {
 } from "../types/serverstatus.ts";
 import LiveClock from "./LiveClock.tsx";
 import ServerCard from "../components/cards/ServerCard.tsx";
+import { CircleArrowDown, CircleArrowUp } from "lucide-preact";
+import { calculate_traffic_speed } from "@/utils/common.ts";
 
 interface ServerListProps {
   server_list_init: ServerStatusResponse;
@@ -24,7 +26,7 @@ export default function ServersList({ server_list_init }: ServerListProps) {
         // 3. 更新状态：必须手动实例化 Class
         set_server_list(new ServerStatusCollection(json.servers));
       } catch (err) {
-        console.error("刷新失败:", err);
+        console.error("get server stats error:", err);
       }
     };
 
@@ -39,14 +41,29 @@ export default function ServersList({ server_list_init }: ServerListProps) {
       <div class="grid md:grid-cols-3 gap-4 sm:grid-cols-1">
         <div class="card bg-base-100 shadow-xl">
           <div class="card-body">
-            <h2 class="card-title">Servers number</h2>
+            <h2 class="card-title">Total Servers</h2>
             <p>{server_list.servers.length}</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-xl">
           <div class="card-body">
-            <h2 class="card-title">Groups number</h2>
-            <p>{server_list.count_gid_number()}</p>
+            <h2 class="card-title">
+              Traffic
+            </h2>
+            <div class="flex-row flex gap-4">
+              <div class="flex-row gap-1 items-center flex">
+                <CircleArrowUp class="h-4 w-4" />
+                {`Outbound ${
+                  calculate_traffic_speed(server_list.get_total_tx())
+                }`}
+              </div>
+              <div class="flex-row gap-1 items-center flex">
+                <CircleArrowDown class="h-4 w-4" />
+                {`Inbound ${
+                  calculate_traffic_speed(server_list.get_total_rx())
+                }`}
+              </div>
+            </div>
           </div>
         </div>
         <div class="card bg-base-100 shadow-xl">
