@@ -7,6 +7,10 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   # 任务 1：始终运行检查（Push 或 PR 都会触发）
   check:
