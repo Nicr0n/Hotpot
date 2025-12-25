@@ -13,7 +13,7 @@ export const handler = define.handlers({
     const response = await fetch(new URL(BACKEND_URL + "/json/stats.json"));
     // 1. 先获取纯 JSON 数据
     const serverstatus_reponse: ServerStatusResponse = await response.json();
-    console.log(serverstatus_reponse);
+    // console.log(serverstatus_reponse);
 
     return {
       data: {
