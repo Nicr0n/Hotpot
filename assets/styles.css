@@ -17,3 +17,9 @@
 progress::-webkit-progress-value {
     transition: width 0.5s ease-in-out;
 }
+
+@theme {
+    /* 定义默认字体 */
+    --font-sans:
+        "Noto Sans", "Noto Color Emoji", ui-sans-serif, system-ui, sans-serif;
+}

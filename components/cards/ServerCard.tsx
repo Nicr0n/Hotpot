@@ -20,7 +20,9 @@ export default function ServerCard({ serverStatus }: ServerCardProps) {
         <div class="flex flex-row">
           <div class="flex-1 flex-row flex gap-1">
             {getFlagEmoji(serverStatus.location)}
-            <h2 class="font-bold text-base">{serverStatus.alias}</h2>
+            <h2 class="font-bold text-base text-debug-red">
+              {serverStatus.alias}
+            </h2>
             <OsIcon os={serverStatus.labels} />
           </div>
           <div class="badge badge-success">Online</div>
