@@ -3,7 +3,7 @@ import { DenoIcon } from "./icons/index.ts";
 const Footer = () => {
   return (
     <footer class="footer sm:footer-horizontal text-base-content items-center p-4">
-      <aside class="grid-flow-col items-center">
+      <aside class="grid-flow-col items-center place-self-center md:justify-self-start">
         <div class="flex flex-row gap-1 items-center">
           <p>
             Powered by
@@ -18,7 +18,7 @@ const Footer = () => {
           </a>
         </div>
       </aside>
-      <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+      <nav class="grid-flow-col gap-4 place-self-center md:justify-self-end">
         <a
           href="https://github.com/Nicr0n/Hotpot"
           class="flex flex-row gap-1 items-center"
