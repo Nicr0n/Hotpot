@@ -50,18 +50,24 @@ export default function ServersList({ server_list_init }: ServerListProps) {
             <h2 class="card-title">
               Traffic
             </h2>
-            <div class="flex-row flex gap-4">
-              <div class="flex-row gap-1 items-center flex">
-                <CircleArrowUp class="h-4 w-4" />
-                {`Outbound ${
-                  calculate_traffic_speed(server_list.get_total_tx())
-                }`}
+            <div class="flex-wrap flex gap-4">
+              <div class="flex flex-row gap-1 items-center">
+                <div class="flex flex-row gap-1 items-center">
+                  <CircleArrowUp class="h-4 w-4" />
+                  <span>Outbound</span>
+                </div>
+                <div>
+                  {`${calculate_traffic_speed(server_list.get_total_tx())}`}
+                </div>
               </div>
-              <div class="flex-row gap-1 items-center flex">
-                <CircleArrowDown class="h-4 w-4" />
-                {`Inbound ${
-                  calculate_traffic_speed(server_list.get_total_rx())
-                }`}
+              <div class="flex flex-row gap-1 items-center">
+                <div class="flex flex-row gap-1 items-center">
+                  <CircleArrowDown class="h-4 w-4" />
+                  <span>Inbound</span>
+                </div>
+                <div>
+                  {`${calculate_traffic_speed(server_list.get_total_rx())}`}
+                </div>
               </div>
             </div>
           </div>

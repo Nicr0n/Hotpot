@@ -19,8 +19,10 @@ export default function ServerCard({ serverStatus }: ServerCardProps) {
       <div class="card-body">
         <div class="flex flex-row">
           <div class="flex-1 flex-row flex gap-1">
-            {getFlagEmoji(serverStatus.location)}
-            <h2 class="font-bold text-base text-debug-red">
+            <span class="inline-block" style="font-family: 'Noto Color Emoji';">
+              {getFlagEmoji(serverStatus.location)}
+            </span>
+            <h2 class="font-bold text-base">
               {serverStatus.alias}
             </h2>
             <OsIcon os={serverStatus.labels} />
